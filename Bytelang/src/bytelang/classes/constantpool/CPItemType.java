@@ -1,0 +1,18 @@
+package bytelang.classes.constantpool;
+
+public enum CPItemType {
+	CLASS,
+	FIELDREF,
+	METHODREF,
+	INTERFACE_METHODREF,
+	STRING,
+	INTEGER,
+	FLOAT,
+	LONG,
+	DOUBLE,
+	NAME_AND_TYPE,
+	UTF8,
+	METHOD_HANDLE,
+	METHOD_TYPE,
+	INVOKE_DYNAMIC
+}

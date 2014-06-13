@@ -1,0 +1,14 @@
+@set(alpha = "abc", beta = [0xFF])
+public class Foo implements Boo {
+	public void foo(String[]) {
+		// nothing
+	}
+	
+	/*private void boo() {
+	}*/
+
+	@attribute(name = "", length = 1, data = [0x01])	
+	public void boo() {
+		iconst_0
+	}
+}
