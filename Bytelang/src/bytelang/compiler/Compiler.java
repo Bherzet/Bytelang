@@ -1,6 +1,7 @@
 package bytelang.compiler;
 
 import java.util.ArrayList;
+import java.util.Formatter;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
@@ -207,6 +208,20 @@ public class Compiler {
 		for (SourceLine sourceLine : sourceLines) {
 			SourceLineInstruction instruction = (SourceLineInstruction) sourceLine;
 			List<Value>           parameters  = instruction.getParameters();
+			
+			if (instruction.getParameters().size() != instruction.getInstructionType().getParameters().length) {
+				Formatter formatter = new Formatter();
+				formatter.format(
+					"Instruction %s excepts exactly %d arguments (%d were given).",
+					instruction.getInstructionType(),
+					instruction.getInstructionType().getParameters().length,
+					instruction.getParameters().size()
+				);
+				
+				String errorMessage = formatter.toString();
+				formatter.close();
+				throw new RuntimeException(errorMessage);
+			}
 			
 			compiled.add(instruction.getInstructionType().getOpcode());
 			for (int i = 0; i < parameters.size(); i++) {
