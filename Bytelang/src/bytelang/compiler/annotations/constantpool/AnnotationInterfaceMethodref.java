@@ -29,7 +29,7 @@ public class AnnotationInterfaceMethodref extends BasicAnnotation implements Fac
 		this.validate(elementAnnotation);
 		
 		this.id          = grepId(elementAnnotation.getParameters());
-		this.classIndex  = elementAnnotation.getParameters().get("classIndex");
+		this.classIndex  = elementAnnotation.getParameters().get("class");
 		this.nameAndType = elementAnnotation.getParameters().get("nameAndType");
 	}
 
