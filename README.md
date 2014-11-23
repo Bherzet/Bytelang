@@ -1,5 +1,5 @@
 # Bytelang
-Bytelang is a programming language for the Java platform. It could be also called *"Assembler for Java"* since it has been designed for low-level description of `*`.class files.
+Bytelang is a programming language for the Java platform. It could be also called *"Assembler for Java"* since it has been designed for low-level description of `*.class` files.
 
 ## What is it for?
 There're few groups of people who might find Bytelang useful:
