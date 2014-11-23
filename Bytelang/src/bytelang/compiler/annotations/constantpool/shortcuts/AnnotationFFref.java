@@ -1,10 +1,11 @@
-package bytelang.compiler.annotations.constantpool;
+package bytelang.compiler.annotations.constantpool.shortcuts;
 
 import java.util.Hashtable;
 
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemFieldref;
 import bytelang.compiler.ConstantPoolBuilder;
+import bytelang.compiler.annotations.constantpool.CPItemAnnotation;
 import bytelang.compiler.annotations.general.AnnotationType;
 import bytelang.compiler.annotations.general.BasicAnnotation;
 import bytelang.helpers.Factory;

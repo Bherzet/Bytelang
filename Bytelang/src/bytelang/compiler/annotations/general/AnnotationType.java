@@ -10,7 +10,6 @@ import bytelang.compiler.annotations.constantpool.AnnotationClass;
 import bytelang.compiler.annotations.constantpool.AnnotationConstantPoolBegin;
 import bytelang.compiler.annotations.constantpool.AnnotationConstantPoolEnd;
 import bytelang.compiler.annotations.constantpool.AnnotationDouble;
-import bytelang.compiler.annotations.constantpool.AnnotationFFref;
 import bytelang.compiler.annotations.constantpool.AnnotationFieldref;
 import bytelang.compiler.annotations.constantpool.AnnotationFloat;
 import bytelang.compiler.annotations.constantpool.AnnotationInteger;
@@ -24,6 +23,7 @@ import bytelang.compiler.annotations.constantpool.AnnotationMethodref;
 import bytelang.compiler.annotations.constantpool.AnnotationNameAndType;
 import bytelang.compiler.annotations.constantpool.AnnotationString;
 import bytelang.compiler.annotations.constantpool.AnnotationUtf8;
+import bytelang.compiler.annotations.constantpool.shortcuts.AnnotationFFref;
 import bytelang.helpers.Factory;
 
 public enum AnnotationType {
