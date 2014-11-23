@@ -541,6 +541,7 @@ public class Compiler {
 					// language shortcuts
 					case FFREF:
 					case FMREF:
+					case FIMREF:
 						constantPoolAnnotations.add((CPItemAnnotation) classAnnotations.get(i));
 						classAnnotations.remove(i--);
 						break;
