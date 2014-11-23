@@ -12,7 +12,7 @@
 
 	@string(id = "StrHello", string = "Hello, I am Bytelang!")
 	@ffref(id="SystemOut", class="java/lang/System", name="out", type="Ljava/io/PrintStream;")
-//	@fmref(id="println", class="java/io/PrintStream", name="println", type="(Ljava/lang/String;)V")
+	@fmref(id="println", class="java/io/PrintStream", name="println", type="(Ljava/lang/String;)V")
 @constantPoolEnd()
 
 public class HelloWorld extends java.lang.Object {
@@ -21,7 +21,7 @@ public class HelloWorld extends java.lang.Object {
 	public static void main(java.lang.String[]) {
 		getstatic     #SystemOut
 		ldc           #StrHello
-//		invokevirtual #println
+		invokevirtual #println
 		return
 	}
 }

@@ -540,6 +540,7 @@ public class Compiler {
 					case INVOKE_DYNAMIC:
 					// language shortcuts
 					case FFREF:
+					case FMREF:
 						constantPoolAnnotations.add((CPItemAnnotation) classAnnotations.get(i));
 						classAnnotations.remove(i--);
 						break;
