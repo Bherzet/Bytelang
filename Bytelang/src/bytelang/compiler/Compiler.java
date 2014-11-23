@@ -523,6 +523,7 @@ public class Compiler {
 				classAnnotations.remove(i--);
 			} else if (inConstantPoolDef) {
 				switch (classAnnotations.get(i).getType()) {
+					// basic constant-pool items
 					case CLASS:
 					case FIELDREF:
 					case METHODREF:
@@ -537,6 +538,8 @@ public class Compiler {
 					case METHOD_HANDLE:
 					case METHOD_TYPE:
 					case INVOKE_DYNAMIC:
+					// language shortcuts
+					case FFREF:
 						constantPoolAnnotations.add((CPItemAnnotation) classAnnotations.get(i));
 						classAnnotations.remove(i--);
 						break;

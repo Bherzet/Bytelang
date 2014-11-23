@@ -10,6 +10,7 @@ import bytelang.compiler.annotations.constantpool.AnnotationClass;
 import bytelang.compiler.annotations.constantpool.AnnotationConstantPoolBegin;
 import bytelang.compiler.annotations.constantpool.AnnotationConstantPoolEnd;
 import bytelang.compiler.annotations.constantpool.AnnotationDouble;
+import bytelang.compiler.annotations.constantpool.AnnotationFFref;
 import bytelang.compiler.annotations.constantpool.AnnotationFieldref;
 import bytelang.compiler.annotations.constantpool.AnnotationFloat;
 import bytelang.compiler.annotations.constantpool.AnnotationInteger;
@@ -62,7 +63,11 @@ public enum AnnotationType {
 	NATYPE              ("nat",                new AnnotationNameAndType()),
 	MHANDLE             ("mhandle",            new AnnotationMethodHandle()),
 	MTYPE               ("mtype",              new AnnotationMethodType()),
-	IDYN                ("idyn",               new AnnotationInvokeDynamic());
+	IDYN                ("idyn",               new AnnotationInvokeDynamic()),
+	
+	// ----------------------------------------------------------------------
+	// --------------------- Language shortcuts -----------------------------
+	FFREF               ("ffref",              new AnnotationFFref());
 
 	private String                             name    = null;
 	private Factory<? extends BasicAnnotation> factory = null;
