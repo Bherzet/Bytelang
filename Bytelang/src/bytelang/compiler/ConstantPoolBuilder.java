@@ -5,6 +5,7 @@ import java.util.Hashtable;
 
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemClass;
+import bytelang.classes.constantpool.CPItemNameAndType;
 import bytelang.classes.constantpool.CPItemType;
 import bytelang.classes.constantpool.CPItemUtf8;
 import bytelang.compiler.annotations.constantpool.CPItemAnnotation;
@@ -98,6 +99,24 @@ public class ConstantPoolBuilder {
 		CPItemClass itemClass         = new CPItemClass(null, stringNameCPIndex);
 		
 		constantPoolItems.add(itemClass);
+		return getConstantPoolIndex(constantPoolItems.size() - 1);
+	}
+	
+	public int addItemNameAndType(int nameIndex, int descriptorIndex) {
+		for (int i = 0; i < constantPoolItems.size(); i++) {
+			if (constantPoolItems.get(i) != null && constantPoolItems.get(i).getType() == CPItemType.NAME_AND_TYPE) {
+				CPItemNameAndType itemNameAndType         = (CPItemNameAndType) constantPoolItems.get(i);
+				int               existingNameIndex       = getItemIndex(itemNameAndType.nameIndex);
+				int               existingDescriptorIndex = getItemIndex(itemNameAndType.descriptorIndex);
+				
+				if (existingNameIndex == nameIndex && existingDescriptorIndex == descriptorIndex) {
+					return getConstantPoolIndex(i);
+				}
+			}
+		}
+		
+		CPItemNameAndType cpItemNameAndType = new CPItemNameAndType(null, nameIndex, descriptorIndex);
+		constantPoolItems.add(cpItemNameAndType);
 		return getConstantPoolIndex(constantPoolItems.size() - 1);
 	}
 	
