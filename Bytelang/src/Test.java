@@ -1,45 +1,10 @@
-import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream.GetField;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 
-import org.xml.sax.ext.LexicalHandler;
-
-import com.googlecode.jawb.JAWB;
-
-import bytelang.classes.Attribute;
-import bytelang.classes.AttributeCode;
 import bytelang.classes.ClassFile;
-import bytelang.classes.ExceptionTableItem;
-import bytelang.classes.FieldInfo;
-import bytelang.classes.MethodInfo;
-import bytelang.classes.Version;
-import bytelang.classes.constantpool.CPItem;
-import bytelang.classes.constantpool.CPItemClass;
-import bytelang.classes.constantpool.CPItemMethodref;
-import bytelang.classes.constantpool.CPItemNameAndType;
-import bytelang.classes.constantpool.CPItemUtf8;
 import bytelang.compiler.Compiler;
-import bytelang.parser.container.code.SourceLineInstruction;
-import bytelang.parser.container.elements.ElementAnnotation;
-import bytelang.parser.container.values.Value;
-import bytelang.parser.container.values.ValueArray;
-import bytelang.parser.container.values.ValueInteger;
-import bytelang.parser.container.values.ValueString;
 import bytelang.parser.lexical.LexicalParser;
-import bytelang.parser.lexical.states.LexicalState;
-import bytelang.parser.lexical.states.StateAt;
-import bytelang.parser.lexical.states.StateInteger;
-import bytelang.parser.lexical.states.StateString;
-import bytelang.parser.lexical.states.StateWord;
 import bytelang.parser.syntactical.SyntacticalParser;
-import bytelang.parser.syntactical.keywords.AccClass;
-import bytelang.parser.syntactical.keywords.KeywordType;
 
 public class Test {
 	public static void main(String[] args) throws Exception {

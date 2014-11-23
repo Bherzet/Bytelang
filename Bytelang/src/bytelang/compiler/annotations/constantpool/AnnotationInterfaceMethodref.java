@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.constantpool;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemInterfaceMethodref;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -83,7 +84,7 @@ public class AnnotationInterfaceMethodref extends BasicAnnotation implements Fac
 				break;
 
 			default:
-				throw new RuntimeException();
+				throw new CompilationErrorException();
 		}
 		
 		switch (this.nameAndType.getType()) {
@@ -92,7 +93,7 @@ public class AnnotationInterfaceMethodref extends BasicAnnotation implements Fac
 				break;
 				
 			default:
-				throw new RuntimeException();
+				throw new CompilationErrorException();
 		}
 		
 		return new CPItemInterfaceMethodref(id, classIndex, nameAndTypeIndex);

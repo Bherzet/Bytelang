@@ -2,6 +2,7 @@ package bytelang.parser.container.code;
 
 import java.util.LinkedList;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.values.Value;
 import bytelang.parser.syntactical.keywords.InstructionType;
 
@@ -46,7 +47,7 @@ public class SourceLineInstruction implements SourceLine {
 
 					case ARRAY:
 					case STRING:
-						throw new RuntimeException(
+						throw new CompilationErrorException(
 							"Parameter of a type " + parameters.get(i).getType() + " is not acceptable for the instruction."
 						);
 				}

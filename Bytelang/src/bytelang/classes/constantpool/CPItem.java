@@ -4,6 +4,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.lang.reflect.Array;
 
+import bytelang.CompilationErrorException;
+
 import com.googlecode.jawb.JAWB;
 import com.googlecode.jawb.clues.types.DynamicLengthType;
 
@@ -28,7 +30,7 @@ public abstract class CPItem {
 				
 				return outputStream.toByteArray();
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				throw new CompilationErrorException(e);
 			}
 		}
 	}

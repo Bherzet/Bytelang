@@ -1,5 +1,7 @@
 package bytelang.parser.lexical.states;
 
+import bytelang.CompilationErrorException;
+
 public class StateBlockComment implements LexicalState {
 	@Override
 	public StateResult match(String input) {
@@ -11,7 +13,7 @@ public class StateBlockComment implements LexicalState {
 		
 		int index = input.indexOf("*/");
 		if (index == -1) {
-			throw new RuntimeException("Block comment should be closed.");
+			throw new CompilationErrorException("Block comment should be closed.");
 		}
 		
 		return new StateResult(input.substring(index + 2), null);

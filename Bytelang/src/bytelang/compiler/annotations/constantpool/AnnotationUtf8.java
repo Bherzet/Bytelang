@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.constantpool;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemUtf8;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -86,11 +87,11 @@ public class AnnotationUtf8 extends BasicAnnotation implements Factory<Annotatio
 				if (((ValueArray) this.bytes).getValues().get(i).getType() == ValueType.INTEGER) {
 					bytes[i] = (short) ((ValueInteger) ((ValueArray) this.bytes).getValues().get(i)).getValue();
 				} else {
-					throw new RuntimeException("Annotation @utf8 only accepts array of integers.");
+					throw new CompilationErrorException("Annotation @utf8 only accepts array of integers.");
 				}
 			}
 		} else {
-			throw new RuntimeException();
+			throw new CompilationErrorException();
 		}
 		
 		if (this.length != null) {

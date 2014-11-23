@@ -1,5 +1,6 @@
 package bytelang.parser.lexical.states;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.values.Value;
 import bytelang.parser.container.values.ValueString;
 
@@ -9,12 +10,12 @@ public class StateString implements LexicalState, ReadableState {
 	@Override
 	public StateResult match(String input) {
 		if (input.charAt(0) != '"') {
-			throw new RuntimeException("Opening quote ('\"') expected in the string literal.");
+			throw new CompilationErrorException("Opening quote ('\"') expected in the string literal.");
 		}
 		
 		int index = input.indexOf('"', 1);
 		if (index == -1) {
-			throw new RuntimeException("Unclosed string literal.");
+			throw new CompilationErrorException("Unclosed string literal.");
 		}
 
 		this.value = input.substring(1, index);

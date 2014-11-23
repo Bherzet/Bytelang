@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.constantpool;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemMethodType;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -67,7 +68,7 @@ public class AnnotationMethodType extends BasicAnnotation implements Factory<Ann
 		} else if (descriptor.getType() == ValueType.STRING) {
 			return new CPItemMethodType(id, constantPoolBuilder.addItemUtf8(((ValueString) descriptor).getString()));
 		} else {
-			throw new RuntimeException();
+			throw new CompilationErrorException();
 		}
 	}
 

@@ -1,5 +1,7 @@
 package bytelang.parser.syntactical.keywords;
 
+import bytelang.CompilationErrorException;
+
 public enum InstructionType {
 	AALOAD          (0x32, new int[]{            }),
 	AASTORE         (0x53, new int[]{            }),
@@ -246,7 +248,7 @@ public enum InstructionType {
 		if (index >= 0 && index < parameters.length) {
 			return parameters[index] < 0;
 		} else {
-			throw new RuntimeException("Internal error: instruction doesn't have parameter with number " + index + ".");
+			throw new CompilationErrorException("Internal error: instruction doesn't have parameter with number " + index + ".");
 		}
 	}
 }

@@ -3,6 +3,8 @@ package bytelang.classes;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+import bytelang.CompilationErrorException;
+
 import com.googlecode.jawb.BinaryType;
 import com.googlecode.jawb.JAWB;
 import com.googlecode.jawb.clues.SetArray;
@@ -90,7 +92,7 @@ public class AttributeCode {
 			
 			return new Attribute(nameIndex, (length < 0) ? result.length : length, result);
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			throw new CompilationErrorException(e);
 		}
 	}
 }

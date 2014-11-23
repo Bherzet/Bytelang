@@ -1,5 +1,6 @@
 package bytelang.parser.lexical.states;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.values.Value;
 import bytelang.parser.container.values.ValueReference;
 
@@ -18,7 +19,7 @@ public class StateReference implements LexicalState, ReadableState {
 			}
 		
 			if (value.length() == 0) {
-				throw new RuntimeException("Missing reference name.");
+				throw new CompilationErrorException("Missing reference name.");
 			}
 			
 			return new StateResult(input, null);

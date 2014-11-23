@@ -3,6 +3,7 @@ package bytelang.compiler.annotations;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.Attribute;
 import bytelang.compiler.ConstantPoolBuilder;
 import bytelang.compiler.annotations.general.AnnotationType;
@@ -79,7 +80,7 @@ public class AnnotationAttribute extends BasicAnnotation implements Factory<Anno
 			
 			for (int i = 0; i < values.size(); i++) {
 				if (values.get(i).getType() != ValueType.INTEGER) {
-					throw new RuntimeException(
+					throw new CompilationErrorException(
 						"Parameter \"data\" for annotation @attribute expects an array of integers."
 					);
 				}

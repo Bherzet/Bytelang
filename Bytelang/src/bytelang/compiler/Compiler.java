@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.Attribute;
 import bytelang.classes.AttributeCode;
 import bytelang.classes.ClassFile;
@@ -119,14 +120,14 @@ public class Compiler {
 					AnnotationSet annotationSet = (AnnotationSet) annotation;
 					
 					if (annotationSet.getTargetType() != TargetType.FIELD) {
-						throw new RuntimeException(
+						throw new CompilationErrorException(
 							"Unrecognized annotation @set has been found for the field."
 						);
 					}
 					
 					annotationSet.applyToField(this.classFile.fields[i]);
 				} else {
-					throw new RuntimeException("Unrecognized annotation has been attached to the field.");
+					throw new CompilationErrorException("Unrecognized annotation has been attached to the field.");
 				}
 			}
 		}
@@ -185,7 +186,7 @@ public class Compiler {
 					AnnotationSet annotationSet = (AnnotationSet) annotation;
 					
 					if (annotationSet.getTargetType() != TargetType.METHOD) {
-						throw new RuntimeException(
+						throw new CompilationErrorException(
 							"Unrecognized annotation @set found in the method."
 						);
 					}
@@ -220,7 +221,7 @@ public class Compiler {
 				
 				String errorMessage = formatter.toString();
 				formatter.close();
-				throw new RuntimeException(errorMessage);
+				throw new CompilationErrorException(errorMessage);
 			}
 			
 			compiled.add(instruction.getInstructionType().getOpcode());
@@ -251,7 +252,7 @@ public class Compiler {
 					case ARRAY:
 					case STRING:
 					default:
-						throw new RuntimeException(
+						throw new CompilationErrorException(
 							"Value of type " + parameter.getType() + " is not acceptable as an instruction's parameter."
 						);
 				}
@@ -312,7 +313,7 @@ public class Compiler {
 				if (annotation.getTargetType() == TargetType.CLASS_FILE) {
 					annotation.applyToClassFile(classFile);
 				} else {
-					throw new RuntimeException("Invalid annotation found for the class file.");
+					throw new CompilationErrorException("Invalid annotation found for the class file.");
 				}
 				
 				classAnnotations.remove(i--);
@@ -414,7 +415,7 @@ public class Compiler {
 	public int detJumpOffset(List<SourceLine> sourceLines, Hashtable<String, Integer> labels, int currentInstruction, String toLabel) {
 		Integer jumpTo = labels.get(toLabel);
 		if (jumpTo == null) {
-			throw new RuntimeException("Instruction reffers to a label (" + toLabel + ") which doesn't exist.");
+			throw new CompilationErrorException("Instruction reffers to a label (" + toLabel + ") which doesn't exist.");
 		}
 		
 		boolean forward = currentInstruction <= jumpTo;
@@ -547,7 +548,7 @@ public class Compiler {
 						break;
 						
 					default:
-						throw new RuntimeException(
+						throw new CompilationErrorException(
 							"Inappropriate annotation (" + classAnnotations.get(i).getType() +
 							") found in the constant pool section."
 						);

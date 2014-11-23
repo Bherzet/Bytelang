@@ -1,5 +1,6 @@
 package bytelang.compiler.annotations.general;
 
+import bytelang.CompilationErrorException;
 import bytelang.compiler.annotations.AnnotationAttribute;
 import bytelang.compiler.annotations.AnnotationCodeAttribute;
 import bytelang.compiler.annotations.AnnotationField;
@@ -88,7 +89,7 @@ public enum AnnotationType {
 			}
 		}
 
-		throw new RuntimeException("Unknown annotation (" + name + ").");
+		throw new CompilationErrorException("Unknown annotation (" + name + ").");
 	}
 	
 	public String getName() {

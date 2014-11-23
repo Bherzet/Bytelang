@@ -3,6 +3,7 @@ package bytelang.compiler;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemClass;
 import bytelang.classes.constantpool.CPItemNameAndType;
@@ -69,7 +70,7 @@ public class ConstantPoolBuilder {
 			this.constantPoolItems.add(new CPItemUtf8(null, newStringShorts.length, newStringShorts));
 			return getConstantPoolIndex(constantPoolItems.size() - 1);
 		} else {
-			throw new RuntimeException(
+			throw new CompilationErrorException(
 				"Annotation @lock has been applied, but there are constant-pool items (UTF8) to be generated."
 			);
 		}
@@ -104,7 +105,7 @@ public class ConstantPoolBuilder {
 			constantPoolItems.add(itemClass);
 			return getConstantPoolIndex(constantPoolItems.size() - 1);
 		} else {
-			throw new RuntimeException(
+			throw new CompilationErrorException(
 				"Annotation @lock has been applied, but there are constant-pool items (CLASS) to be generated."
 			);
 		}
@@ -128,7 +129,7 @@ public class ConstantPoolBuilder {
 			constantPoolItems.add(cpItemNameAndType);
 			return getConstantPoolIndex(constantPoolItems.size() - 1);
 		} else {
-			throw new RuntimeException(
+			throw new CompilationErrorException(
 				"Annotation @lock has been applied, but there are constant-pool items (NAME_AND_TYPE) to be generated."
 			);
 		}
@@ -183,7 +184,7 @@ public class ConstantPoolBuilder {
 				if (result.get(cpItemAnnotation.getId()) == null) {
 					result.put(cpItemAnnotation.getId(), currentIndex);
 				} else {
-					throw new RuntimeException("Multiple same identifiers found.");
+					throw new CompilationErrorException("Multiple same identifiers found.");
 				}
 			}
 		
@@ -203,7 +204,7 @@ public class ConstantPoolBuilder {
 			Integer referenceNumber = referencesTable.get(referenceName);
 			
 			if (referenceNumber == null) {
-				throw new RuntimeException("Identifier " + referenceName + " doesn't exist.");
+				throw new CompilationErrorException("Identifier " + referenceName + " doesn't exist.");
 			} else {
 				return new ValueInteger(referenceNumber);
 			}
@@ -231,7 +232,7 @@ public class ConstantPoolBuilder {
 			}
 		}
 		
-		throw new RuntimeException(
+		throw new CompilationErrorException(
 			"Item with identifier \"" + id + "\" is undefined."
 		);
 	}

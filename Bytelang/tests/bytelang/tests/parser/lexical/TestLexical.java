@@ -1,6 +1,6 @@
 package bytelang.tests.parser.lexical;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
 

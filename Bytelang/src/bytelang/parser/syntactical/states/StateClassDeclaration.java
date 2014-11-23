@@ -5,6 +5,7 @@ import static bytelang.parser.syntactical.Utils.next;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.TreeBuilder;
 import bytelang.parser.container.code.SourceLineInstruction;
 import bytelang.parser.container.code.SourceLineLabel;
@@ -44,7 +45,7 @@ public class StateClassDeclaration implements SyntacticalState {
 		
 		classType = KeywordType.findKeyword(((StateWord) next(tokens, LexicalStateType.WORD, "Class type expected in the class declaration.")).getWord());
 		if (classType == null || !classType.isClassType()) {
-			throw new RuntimeException("Class type expected in the class declaration.");
+			throw new CompilationErrorException("Class type expected in the class declaration.");
 		}
 
 		className = ((StateWord) next(tokens, LexicalStateType.WORD, "Class name expected in the class declaration.")).getWord();
@@ -53,13 +54,13 @@ public class StateClassDeclaration implements SyntacticalState {
 			StateWord   tmpWord = (StateWord) next(tokens, LexicalStateType.WORD, "Class body or interaces / super class expected.");
 			KeywordType keyword = KeywordType.findKeyword(tmpWord.getWord());
 			if (keyword == null) {
-				throw new RuntimeException("Keyword \"implements\" or \"extends\" expected instead.");
+				throw new CompilationErrorException("Keyword \"implements\" or \"extends\" expected instead.");
 			}
 
 			switch (keyword) {
 				case IMPLEMENTS: {
 					if (implemented.size() > 0) {
-						throw new RuntimeException("Keyword \"implements\" can be only typed once.");
+						throw new CompilationErrorException("Keyword \"implements\" can be only typed once.");
 					}
 					
 					boolean nextInterface = true;
@@ -94,7 +95,7 @@ public class StateClassDeclaration implements SyntacticalState {
 				
 				case EXTENDS: {
 					if (extended != null) {
-						throw new RuntimeException("Keyword \"extends\" can be only typed once.");
+						throw new CompilationErrorException("Keyword \"extends\" can be only typed once.");
 					}
 					
 					boolean nextPart  = true;
@@ -115,7 +116,7 @@ public class StateClassDeclaration implements SyntacticalState {
 				}
 
 				default:
-					throw new RuntimeException("Keyword \"implements\" or \"extends\" expected instead.");
+					throw new CompilationErrorException("Keyword \"implements\" or \"extends\" expected instead.");
 			}
 		}
 
@@ -126,7 +127,7 @@ public class StateClassDeclaration implements SyntacticalState {
 		
 		next(tokens, LexicalStateType.S_LBRACE, "Opening brace expected in the class definition.");
 		if (tokens.size() == 0 || tokens.getLast().getType() != LexicalStateType.S_RBRACE) {
-			throw new RuntimeException("Source code should end with closing brace '{'.");
+			throw new CompilationErrorException("Source code should end with closing brace '{'.");
 		}
 		tokens.removeLast();
 		
@@ -142,7 +143,7 @@ public class StateClassDeclaration implements SyntacticalState {
 					SyntacticalStateResult result     = annotation.match(tokens);
 					
 					if (result == null) {
-						throw new RuntimeException("Invalid annotation found inside the class declaration.");
+						throw new CompilationErrorException("Invalid annotation found inside the class declaration.");
 					}
 					
 					treeBuilder.addAnnotation(annotation.getElementAnnotation());
@@ -205,7 +206,7 @@ public class StateClassDeclaration implements SyntacticalState {
 				}
 					
 				default:
-					throw new RuntimeException("Invalid token found inside the class declaration.");
+					throw new CompilationErrorException("Invalid token found inside the class declaration.");
 			}
 		}
 	}
@@ -237,7 +238,7 @@ public class StateClassDeclaration implements SyntacticalState {
 		}
 		
 		if (result.endsWith(".")) {
-			throw new RuntimeException("Invalid type name.");
+			throw new CompilationErrorException("Invalid type name.");
 		}
 		
 		return result;
@@ -272,7 +273,7 @@ public class StateClassDeclaration implements SyntacticalState {
 							InstructionType.findInstruction(((StateWord) next).getWord())
 						));
 					} else {
-						throw new RuntimeException("Invalid instruction (" + ((StateWord) next).getWord() + ") found in the method implementation.");
+						throw new CompilationErrorException("Invalid instruction (" + ((StateWord) next).getWord() + ") found in the method implementation.");
 					}
 				} break;
 					
@@ -300,7 +301,7 @@ public class StateClassDeclaration implements SyntacticalState {
 				} break;
 					
 				default:
-					throw new RuntimeException("Invalid token (" + next.getType() + ") found in the method implementation.");
+					throw new CompilationErrorException("Invalid token (" + next.getType() + ") found in the method implementation.");
 			}
 		}
 		

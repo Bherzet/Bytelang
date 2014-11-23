@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.constantpool;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemNameAndType;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -78,7 +79,7 @@ public class AnnotationNameAndType extends BasicAnnotation implements Factory<An
 		} else if (this.name.getType() == ValueType.STRING) {
 			name = constantPoolBuilder.addItemUtf8(((ValueString) this.name).getString());
 		} else {
-			throw new RuntimeException("Internal error.");
+			throw new CompilationErrorException("Internal error.");
 		}
 		
 		if (this.descriptor.getType() == ValueType.INTEGER) {
@@ -86,7 +87,7 @@ public class AnnotationNameAndType extends BasicAnnotation implements Factory<An
 		} else if (this.descriptor.getType() == ValueType.STRING) {
 			descriptor = constantPoolBuilder.addItemUtf8(((ValueString) this.descriptor).getString());
 		} else {
-			throw new RuntimeException("Internal error.");
+			throw new CompilationErrorException("Internal error.");
 		}
 		
 		return new CPItemNameAndType(id, name, descriptor);

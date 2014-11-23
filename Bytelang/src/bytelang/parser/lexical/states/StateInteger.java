@@ -1,5 +1,6 @@
 package bytelang.parser.lexical.states;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.values.Value;
 import bytelang.parser.container.values.ValueInteger;
 
@@ -31,7 +32,7 @@ public class StateInteger implements LexicalState, ReadableState {
 			value = Long.valueOf(word, hexadecimal ? 16 : 10);
 			return new StateResult(input, null);
 		} catch (NumberFormatException e) {
-			throw new RuntimeException("Internal error: String couldn't be converted to an integer value.");
+			throw new CompilationErrorException("Internal error: String couldn't be converted to an integer value.");
 		}
 	}
 

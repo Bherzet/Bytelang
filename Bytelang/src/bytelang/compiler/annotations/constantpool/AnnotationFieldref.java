@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.constantpool;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemFieldref;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -82,7 +83,7 @@ public class AnnotationFieldref extends BasicAnnotation implements Factory<Annot
 				break;
 				
 			default:
-				throw new RuntimeException();
+				throw new CompilationErrorException();
 		}
 		
 		switch (this.nameAndType.getType()) {
@@ -91,7 +92,7 @@ public class AnnotationFieldref extends BasicAnnotation implements Factory<Annot
 				break;
 				
 			default:
-				throw new RuntimeException();
+				throw new CompilationErrorException();
 		}
 		
 		return new CPItemFieldref(id, classIndex, nameAndTypeIndex);

@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.set.classFile;
 
 import java.util.ArrayList;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.ClassFile;
 import bytelang.classes.Version;
 import bytelang.compiler.annotations.AnnotationSet.ClassCommandProcessor;
@@ -19,7 +20,7 @@ public class SetClassFileVersion implements ClassCommandProcessor {
 			ArrayList<Value> values     = valueArray.getValues();
 			
 			if (values.size() != 2) {
-				throw new RuntimeException(
+				throw new CompilationErrorException(
 					"Annotation @set for the value \"version\" expects an array of exactly 2 integers."
 				);
 			}
@@ -27,7 +28,7 @@ public class SetClassFileVersion implements ClassCommandProcessor {
 			int vals[] = new int[2];
 			for (int i = 0; i < 2; i++) {
 				if (values.get(i).getType() != ValueType.INTEGER) {
-					throw new RuntimeException(
+					throw new CompilationErrorException(
 						"Annotation @set for the value \"version\" expects an array of integer values."
 					);
 				}
@@ -48,7 +49,7 @@ public class SetClassFileVersion implements ClassCommandProcessor {
 				case "1.7": classFile.version = new Version(0, 51); break;
 				case "1.8": classFile.version = new Version(0, 52); break;
 				default:
-					throw new RuntimeException(
+					throw new CompilationErrorException(
 						"Unrecognized version has been passed to the annotation @set for the value \"version\"."
 					);
 			}

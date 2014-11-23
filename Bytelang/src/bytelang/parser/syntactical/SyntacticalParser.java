@@ -3,6 +3,7 @@ package bytelang.parser.syntactical;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.elements.ElementAnnotation;
 import bytelang.parser.container.elements.ElementClass;
 import bytelang.parser.lexical.states.LexicalState;
@@ -66,7 +67,7 @@ public class SyntacticalParser {
 					this.currentState = result.newState;
 				}
 			} else {
-				throw new RuntimeException("Unexpected token found.");
+				throw new CompilationErrorException("Unexpected token found.");
 			}
 		}
 	}

@@ -1,5 +1,7 @@
 package bytelang.parser.syntactical.states;
 
+import static bytelang.parser.syntactical.Utils.next;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -10,7 +12,6 @@ import bytelang.parser.lexical.states.LexicalState;
 import bytelang.parser.lexical.states.LexicalStateType;
 import bytelang.parser.lexical.states.ReadableState;
 import bytelang.parser.lexical.states.StateWord;
-import static bytelang.parser.syntactical.Utils.*;
 
 public class StateAnnotation implements SyntacticalState {
 	private ElementAnnotation elementAnnotation = null;

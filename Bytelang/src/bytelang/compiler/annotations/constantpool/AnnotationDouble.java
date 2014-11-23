@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.constantpool;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemDouble;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -74,7 +75,7 @@ public class AnnotationDouble extends BasicAnnotation implements Factory<Annotat
 			if (this.lowBytes.getValues().get(i).getType() == ValueType.INTEGER) {
 				lowValues[i] = (short) ((ValueInteger) this.lowBytes.getValues().get(i)).getValue();
 			} else {
-				throw new RuntimeException("Annotation @long only accepts array of integer values.");
+				throw new CompilationErrorException("Annotation @long only accepts array of integer values.");
 			}
 		}
 		
@@ -82,7 +83,7 @@ public class AnnotationDouble extends BasicAnnotation implements Factory<Annotat
 			if (this.highBytes.getValues().get(i).getType() == ValueType.INTEGER) {
 				highValues[i] = (short) ((ValueInteger) this.highBytes.getValues().get(i)).getValue();
 			} else {
-				throw new RuntimeException("Annotation @long only accepts array of integer values.");
+				throw new CompilationErrorException("Annotation @long only accepts array of integer values.");
 			}
 		}
 		

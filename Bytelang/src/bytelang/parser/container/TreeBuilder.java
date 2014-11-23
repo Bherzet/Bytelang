@@ -3,6 +3,7 @@ package bytelang.parser.container;
 import java.util.LinkedList;
 import java.util.List;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.code.SourceLine;
 import bytelang.parser.container.code.SourceLineInstruction;
 import bytelang.parser.container.elements.AnnotableElement;
@@ -53,7 +54,7 @@ public class TreeBuilder {
 		if (line instanceof SourceLineInstruction) {
 			((SourceLineInstruction) line).addParameter(parameter);
 		} else {
-			throw new RuntimeException("Parameter must be preceded by the instruction.");
+			throw new CompilationErrorException("Parameter must be preceded by the instruction.");
 		}
 	}
 	

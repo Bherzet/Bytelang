@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.lexical.states.DefaultLexicalState;
 import bytelang.parser.lexical.states.LexicalState;
 import bytelang.parser.lexical.states.StateResult;
@@ -37,7 +38,7 @@ public class LexicalParser {
 				currentState = (result.newState != null) ? result.newState : defaultState;
 				input        = result.processedInput;
 			} else {
-				throw new RuntimeException("Unknown element found.");
+				throw new CompilationErrorException("Unknown element found.");
 			}
 		}
 	}

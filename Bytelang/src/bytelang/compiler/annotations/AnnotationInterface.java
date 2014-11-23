@@ -1,5 +1,6 @@
 package bytelang.compiler.annotations;
 
+import bytelang.CompilationErrorException;
 import bytelang.compiler.ConstantPoolBuilder;
 import bytelang.compiler.annotations.general.AnnotationType;
 import bytelang.compiler.annotations.general.BasicAnnotation;
@@ -42,7 +43,7 @@ public class AnnotationInterface extends BasicAnnotation implements Factory<Anno
 		} else if (value.getType() == ValueType.REFERENCE) {
 			return constantPoolBuilder.getCPItemIndexById(((ValueReference) value).getValue());
 		} else {
-			throw new RuntimeException("Internal error.");
+			throw new CompilationErrorException("Internal error.");
 		}
 	}
 }

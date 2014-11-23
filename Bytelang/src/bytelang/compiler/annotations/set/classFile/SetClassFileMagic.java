@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.set.classFile;
 
 import java.util.ArrayList;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.ClassFile;
 import bytelang.compiler.annotations.AnnotationSet.ClassCommandProcessor;
 import bytelang.parser.container.values.Value;
@@ -16,7 +17,7 @@ public class SetClassFileMagic implements ClassCommandProcessor {
 		ArrayList<Value> values    = valueArray.getValues();
 		
 		if (values.size() != 4) {
-			throw new RuntimeException(
+			throw new CompilationErrorException(
 				"Annotation @set for the value \"magic\" expects an array with exactly 4 integers."
 			);
 		}
@@ -24,7 +25,7 @@ public class SetClassFileMagic implements ClassCommandProcessor {
 		classFile.magic = new short[4];
 		for (int i = 0; i < 4; i++) {
 			if (values.get(i).getType() != ValueType.INTEGER) {
-				throw new RuntimeException("Annotation @set for the value \"magic\" expects an array of integers.");
+				throw new CompilationErrorException("Annotation @set for the value \"magic\" expects an array of integers.");
 			}
 			
 			classFile.magic[i] = (short) ((ValueInteger) values.get(i)).getValue();

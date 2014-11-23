@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.constantpool;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemFloat;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -67,7 +68,7 @@ public class AnnotationFloat extends BasicAnnotation implements Factory<Annotati
 			if (this.bytes.getValues().get(i).getType() == ValueType.INTEGER) {
 				values[i] = (short) ((ValueInteger) this.bytes.getValues().get(i)).getValue();
 			} else {
-				throw new RuntimeException("Annotation @float only accepts array of integer values.");
+				throw new CompilationErrorException("Annotation @float only accepts array of integer values.");
 			}
 		}
 		

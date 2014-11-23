@@ -13,7 +13,7 @@ import bytelang.parser.syntactical.SyntacticalParser;
 public class Bytelang {
 	public static void main(String[] args) {
 		if (args.length != 2) {
-			System.out.println("Bytelang (version 0.9.0) by Tomas Zima");
+			System.out.println("Bytelang (version 0.9.1) by Tomas Zima");
 			System.out.println("Usage: bytelang <inputFile> <outputFile>");
 		} else {
 			try {
@@ -34,7 +34,7 @@ public class Bytelang {
 				System.err.println(e.getMessage());
 			} catch (IOException e) {
 				System.err.println(e.getMessage());
-			} catch (RuntimeException e) {
+			} catch (CompilationErrorException e) {
 				System.err.println("Compilation error: " + e.getMessage());
 			}
 		}

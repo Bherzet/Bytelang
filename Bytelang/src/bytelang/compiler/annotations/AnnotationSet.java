@@ -1,5 +1,6 @@
 package bytelang.compiler.annotations;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.ClassFile;
 import bytelang.classes.FieldInfo;
 import bytelang.classes.MethodInfo;
@@ -131,7 +132,7 @@ public class AnnotationSet extends BasicAnnotation implements Factory<Annotation
 	@Override
 	public void fromElementAnnotation(ElementAnnotation elementAnnotation) {
 		if (elementAnnotation.getParameters().size() != 1) {
-			throw new RuntimeException("Annotation @set expects exactly one parameter.");
+			throw new CompilationErrorException("Annotation @set expects exactly one parameter.");
 		}
 		
 		this.validate(elementAnnotation);
@@ -144,7 +145,7 @@ public class AnnotationSet extends BasicAnnotation implements Factory<Annotation
 			this.setType    = setType;
 			this.targetType = setType.getTargetType();
 		} else {
-			throw new RuntimeException(
+			throw new CompilationErrorException(
 				"Unrecognized @set annotation (" + paramName + ")."
 			);
 		}

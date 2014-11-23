@@ -2,6 +2,7 @@ package bytelang.compiler.annotations.general;
 
 import java.util.Hashtable;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.container.elements.ElementAnnotation;
 import bytelang.parser.container.values.Value;
 import bytelang.parser.container.values.ValueString;
@@ -29,7 +30,7 @@ public abstract class BasicAnnotation implements Annotation {
 		for (String paramName : parameters.keySet()) {
 			if (mandatoryParams.get(paramName) != null) {
 				if (!checkType(parameters.get(paramName).getType(), mandatoryParams.get(paramName))) {
-					throw new RuntimeException(
+					throw new CompilationErrorException(
 						"Annotation @" + elementAnnotation.getName() + " doesn't take argument of type " +
 						parameters.get(paramName).getType() + " for mandatory argument \"" + paramName + "\"."
 					);
@@ -38,13 +39,13 @@ public abstract class BasicAnnotation implements Annotation {
 				mandatoryTable.put(paramName, true);
 			} else if (nonMandatoryParams.get(paramName) != null) {
 				if (!checkType(parameters.get(paramName).getType(), nonMandatoryParams.get(paramName))) {
-					throw new RuntimeException(
+					throw new CompilationErrorException(
 						"Annotation @" + elementAnnotation.getName() + " doesn't take argument of type " +
 						parameters.get(paramName).getType() + " for non-mandatory argument \"" + paramName + "\"."
 					);
 				}
 			} else {
-				throw new RuntimeException(
+				throw new CompilationErrorException(
 					"Annotation " + elementAnnotation.getName() + " doesn't take argument " + paramName + "."
 				);
 			}
@@ -52,7 +53,7 @@ public abstract class BasicAnnotation implements Annotation {
 		
 		for (String key : mandatoryTable.keySet()) {
 			if (mandatoryTable.get(key) == false) {
-				throw new RuntimeException(
+				throw new CompilationErrorException(
 					"Missing argument \"" + key + "\" for annotation @" + elementAnnotation.getName() + "."
 				);
 			}
@@ -86,7 +87,7 @@ public abstract class BasicAnnotation implements Annotation {
 			if (parameters.get("id").getType() == ValueType.STRING) {
 				return ((ValueString) parameters.get("id")).getString();
 			} else {
-				throw new RuntimeException("Identifier must be a string.");
+				throw new CompilationErrorException("Identifier must be a string.");
 			}
 		}
 	}

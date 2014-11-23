@@ -1,5 +1,6 @@
 package bytelang.compiler.annotations.set.classFile;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.ClassFile;
 import bytelang.classes.constantpool.CPItem;
 import bytelang.classes.constantpool.CPItemType;
@@ -28,7 +29,7 @@ public class SetClassFileSuperClass implements ClassCommandProcessor {
 				}
 			}
 			
-			throw new RuntimeException(
+			throw new CompilationErrorException(
 				"Annotation @set for the value \"superClass\" reffers to an constant-pool item which doesn't exist."
 			);
 		}

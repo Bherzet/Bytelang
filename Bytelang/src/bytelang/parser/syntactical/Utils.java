@@ -2,6 +2,7 @@ package bytelang.parser.syntactical;
 
 import java.util.LinkedList;
 
+import bytelang.CompilationErrorException;
 import bytelang.parser.lexical.states.LexicalState;
 import bytelang.parser.lexical.states.LexicalStateType;
 
@@ -15,7 +16,7 @@ public abstract class Utils {
 			}
 		}
 		
-		throw new RuntimeException(message);
+		throw new CompilationErrorException(message);
 	}
 	
 	public static LexicalState next(LinkedList<LexicalState> tokens, String message) {
@@ -23,7 +24,7 @@ public abstract class Utils {
 			return tokens.getFirst();
 		}
 		
-		throw new RuntimeException(message);
+		throw new CompilationErrorException(message);
 	}
 	
 	public static LexicalState next(LinkedList<LexicalState> tokens, LexicalStateType[] types, String message) {
@@ -37,6 +38,6 @@ public abstract class Utils {
 			}
 		}
 		
-		throw new RuntimeException(message);
+		throw new CompilationErrorException(message);
 	}
 }

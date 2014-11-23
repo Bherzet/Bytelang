@@ -1,5 +1,6 @@
 package bytelang.compiler.annotations;
 
+import bytelang.CompilationErrorException;
 import bytelang.classes.Attribute;
 import bytelang.classes.FieldInfo;
 import bytelang.compiler.ConstantPoolBuilder;
@@ -67,7 +68,7 @@ public class AnnotationField extends BasicAnnotation implements Factory<Annotati
 		} else if (this.name.getType() == ValueType.REFERENCE) {
 			nameIndex = constantPoolBuilder.getCPItemIndexById(((ValueReference) name).getValue());
 		} else {
-			throw new RuntimeException();
+			throw new CompilationErrorException();
 		}
 		
 		if (this.descriptor.getType() == ValueType.INTEGER) {
@@ -77,7 +78,7 @@ public class AnnotationField extends BasicAnnotation implements Factory<Annotati
 		} else if (this.descriptor.getType() == ValueType.REFERENCE) {
 			descriptorIndex = constantPoolBuilder.getCPItemIndexById(((ValueReference) descriptor).getValue());
 		} else {
-			throw new RuntimeException();
+			throw new CompilationErrorException();
 		}
 
 		return new FieldInfo(accessFlags, nameIndex, descriptorIndex, 0, new Attribute[0]);
