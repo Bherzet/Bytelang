@@ -14,7 +14,7 @@ import bytelang.parser.container.values.ValueInteger;
 import bytelang.parser.container.values.ValueString;
 import bytelang.parser.container.values.ValueType;
 
-public abstract class AnnotationFastRef extends BasicAnnotation implements Factory<AnnotationFFref>, CPItemAnnotation {
+public abstract class AnnotationFastRef extends BasicAnnotation implements Factory<AnnotationFFRef>, CPItemAnnotation {
 	private String id;
 	private Value classIndex;
 	private Value nameIndex;
@@ -39,8 +39,8 @@ public abstract class AnnotationFastRef extends BasicAnnotation implements Facto
 	}
 	
 	@Override
-	public AnnotationFFref newInstance() {
-		return new AnnotationFFref();
+	public AnnotationFFRef newInstance() {
+		return new AnnotationFFRef();
 	}
 	
 	@Override

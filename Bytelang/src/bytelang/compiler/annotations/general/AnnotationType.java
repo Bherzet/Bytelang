@@ -23,7 +23,7 @@ import bytelang.compiler.annotations.constantpool.AnnotationMethodref;
 import bytelang.compiler.annotations.constantpool.AnnotationNameAndType;
 import bytelang.compiler.annotations.constantpool.AnnotationString;
 import bytelang.compiler.annotations.constantpool.AnnotationUtf8;
-import bytelang.compiler.annotations.constantpool.shortcuts.AnnotationFFref;
+import bytelang.compiler.annotations.constantpool.shortcuts.AnnotationFFRef;
 import bytelang.compiler.annotations.constantpool.shortcuts.AnnotationFIMRef;
 import bytelang.compiler.annotations.constantpool.shortcuts.AnnotationFMRef;
 import bytelang.helpers.Factory;
@@ -69,7 +69,7 @@ public enum AnnotationType {
 	
 	// ----------------------------------------------------------------------
 	// --------------------- Language shortcuts -----------------------------
-	FFREF               ("ffref",              new AnnotationFFref()),
+	FFREF               ("ffref",              new AnnotationFFRef()),
 	FMREF               ("fmref",              new AnnotationFMRef()),
 	FIMREF              ("fimref",             new AnnotationFIMRef());
 
