@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Bytelang" default="default">
+	<!-- ===== PROPERTIES ===== -->
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="bin" />
+	<property name="dist.dir" location="dist" />
+	<property name="doc.dir" location="doc" />
+	<property name="lib.dir" location="lib" />
+	<!-- number of version (will be part of name of the generated JAR file). -->
+	<property name="version" value="0.8.2" />
+	
+	<!-- ===== INCLUDE EXTERNAL LIBRARIES ===== -->
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="*.jar" />
+	</path>
+	
+	<!-- ===== CLEAN: DELETE THE PREVIOUS BUILDS ===== -->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<delete dir="${doc.dir}" />
+	</target>
+	
+	<!-- ===== MAKEDIRS: CREATE DIRECTORIES FOR THE BUILD ===== -->
+	<target name="makedirs" depends="clean">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${doc.dir}" />
+	</target>
+	
+	<!-- ===== PROPERTIES ===== -->
+	<target name="compile">
+		<javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="true">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+	
+	<!-- ===== DOC: GENERATE DOCUMENTATION ===== -->
+	<target name="doc" depends="compile">
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}">
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</javadoc>
+	</target>
+
+	<!-- ===== JAR: GENERATE JAR FILES ===== -->
+	<target name="jar" depends="compile">
+		<jar basedir="${build.dir}" destfile="${dist.dir}/Bytelang-${version}.jar">
+			<zipgroupfileset includes="*.jar" dir="${lib.dir}" />
+			<manifest>
+				<attribute name="Main-Class" value="bytelang.Bytelang" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<!-- ===== DEFAULT: BUILDS THE JAR AND THE DOCUMENTATION ===== -->
+	<target name="default" depends="compile, jar">
+	</target>
+</project>
