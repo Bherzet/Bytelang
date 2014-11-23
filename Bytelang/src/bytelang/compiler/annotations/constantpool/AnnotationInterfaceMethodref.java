@@ -11,6 +11,7 @@ import bytelang.helpers.Factory;
 import bytelang.parser.container.elements.ElementAnnotation;
 import bytelang.parser.container.values.Value;
 import bytelang.parser.container.values.ValueInteger;
+import bytelang.parser.container.values.ValueString;
 import bytelang.parser.container.values.ValueType;
 
 public class AnnotationInterfaceMethodref extends BasicAnnotation implements Factory<AnnotationInterfaceMethodref>, CPItemAnnotation {
@@ -20,7 +21,7 @@ public class AnnotationInterfaceMethodref extends BasicAnnotation implements Fac
 	
 	public AnnotationInterfaceMethodref() {
 		this.addNonMandatoryParam("id", new ValueType[]{ValueType.STRING});
-		this.addMandatoryParam("class", new ValueType[]{ValueType.INTEGER, ValueType.REFERENCE});
+		this.addMandatoryParam("class", new ValueType[]{ValueType.INTEGER, ValueType.REFERENCE, ValueType.STRING});
 		this.addMandatoryParam("nameAndType", new ValueType[]{ValueType.INTEGER, ValueType.REFERENCE});
 	}
 	
@@ -75,6 +76,10 @@ public class AnnotationInterfaceMethodref extends BasicAnnotation implements Fac
 		switch (this.classIndex.getType()) {
 			case INTEGER:
 				classIndex = (int) ((ValueInteger) this.classIndex).getValue();
+				break;
+				
+			case STRING:
+				classIndex = constantPoolBuilder.addItemClass(((ValueString) this.classIndex).getString());
 				break;
 
 			default:

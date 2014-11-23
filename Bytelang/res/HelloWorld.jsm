@@ -1,7 +1,8 @@
 @constantPoolBegin()
-	@class(id = "ClassSystem", name = "java/lang/System")
+	//@class(id = "ClassSystem", name = "java/lang/System")
 	@nameAndType(id = "NTout", name = "out", descriptor = "Ljava/io/PrintStream;")
-	@fieldref(id = "SystemOut", class = #ClassSystem, nameAndType = #NTout)
+	@fieldref(id = "SystemOut", class = "java/lang/System", nameAndType = #NTout)
+	//@fieldref(id = "SystemOut", class = #ClassSystem, nameAndType = #NTout)
 	@string(id = "StrHello", string = "Hello, I am Bytelang!")
 
 	@class(id = "ClassPrintStream", name = "java/io/PrintStream")
