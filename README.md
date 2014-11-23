@@ -17,7 +17,10 @@ Download an executable JAR file and move it to some handy location (e.g. /usr/bi
 You may look in [example applications](https://github.com/tzima/Bytelang/tree/master/BytelangExamples). If you know Java bytecode and structure of Class file, you'll probably understand what's going on.
 
 ## Where do I find a handbook?
-Unfortunately, there isn't one in the moment. Until official documentation is done, you may study examples and JVM specification
+Unfortunately, there isn't one in the moment. Until official documentation is done, you may study examples and JVM specification.
+
+If you speak a Czech language, you may also want to see the following video I created:
+[![Bytelang - Představení a základní popis jazyka](http://img.youtube.com/vi/90E091bDCEU/0.jpg)](https://www.youtube.com/watch?v=90E091bDCEU)
 
 ## Warning
 This is *not* an ordinary conventional programming language. It's terribly difficult to actually create a large application in that. You won't have idea what you're doing without having expert-level knowledges of Java platform [study material](http://docs.oracle.com/javase/specs/jvms/se7/html/). Don't waste your time unless you are sure that this language & compiler is exactly what you need or want.
