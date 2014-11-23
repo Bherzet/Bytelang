@@ -74,7 +74,7 @@ public class ConstantPoolBuilder {
 	
 	public int addItemClass(String className) {
 		for (int i = 0; i < constantPoolItems.size(); i++) {
-			if (constantPoolItems.get(i).getType() == CPItemType.CLASS) {
+			if (constantPoolItems.get(i) != null && constantPoolItems.get(i).getType() == CPItemType.CLASS) {
 				CPItemClass itemClass = (CPItemClass) constantPoolItems.get(i);
 				int         nameIndex = itemClass.nameIndex;
 				int         itemIndex = getItemIndex(nameIndex);
