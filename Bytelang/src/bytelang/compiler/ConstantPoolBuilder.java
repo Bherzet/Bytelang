@@ -69,7 +69,9 @@ public class ConstantPoolBuilder {
 			this.constantPoolItems.add(new CPItemUtf8(null, newStringShorts.length, newStringShorts));
 			return getConstantPoolIndex(constantPoolItems.size() - 1);
 		} else {
-			throw new RuntimeException("Annotation @lock has been applied, but there are constant-pool items to be generated.");
+			throw new RuntimeException(
+				"Annotation @lock has been applied, but there are constant-pool items (UTF8) to be generated."
+			);
 		}
 	}
 	
@@ -95,11 +97,17 @@ public class ConstantPoolBuilder {
 			}
 		}
 		
-		int         stringNameCPIndex = addItemUtf8(className);
-		CPItemClass itemClass         = new CPItemClass(null, stringNameCPIndex);
-		
-		constantPoolItems.add(itemClass);
-		return getConstantPoolIndex(constantPoolItems.size() - 1);
+		if (!locked) {
+			int         stringNameCPIndex = addItemUtf8(className);
+			CPItemClass itemClass         = new CPItemClass(null, stringNameCPIndex);
+			
+			constantPoolItems.add(itemClass);
+			return getConstantPoolIndex(constantPoolItems.size() - 1);
+		} else {
+			throw new RuntimeException(
+				"Annotation @lock has been applied, but there are constant-pool items (CLASS) to be generated."
+			);
+		}
 	}
 	
 	public int addItemNameAndType(int nameIndex, int descriptorIndex) {
@@ -115,9 +123,15 @@ public class ConstantPoolBuilder {
 			}
 		}
 		
-		CPItemNameAndType cpItemNameAndType = new CPItemNameAndType(null, nameIndex, descriptorIndex);
-		constantPoolItems.add(cpItemNameAndType);
-		return getConstantPoolIndex(constantPoolItems.size() - 1);
+		if (!locked) {
+			CPItemNameAndType cpItemNameAndType = new CPItemNameAndType(null, nameIndex, descriptorIndex);
+			constantPoolItems.add(cpItemNameAndType);
+			return getConstantPoolIndex(constantPoolItems.size() - 1);
+		} else {
+			throw new RuntimeException(
+				"Annotation @lock has been applied, but there are constant-pool items (NAME_AND_TYPE) to be generated."
+			);
+		}
 	}
 	
 	public int getItemIndex(int constantPoolIndex) {
