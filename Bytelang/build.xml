@@ -7,7 +7,7 @@
 	<property name="doc.dir" location="doc" />
 	<property name="lib.dir" location="lib" />
 	<!-- number of version (will be part of name of the generated JAR file). -->
-	<property name="version" value="0.8.2" />
+	<property name="version" value="0.9.0" />
 	
 	<!-- ===== INCLUDE EXTERNAL LIBRARIES ===== -->
 	<path id="classpath">
