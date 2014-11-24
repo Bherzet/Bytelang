@@ -36,4 +36,4 @@ This is *not* an ordinary conventional programming language. It's terribly diffi
 
 [Bytelang 0.9.1 - JAR file (209K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.9.1.jar?raw=true)
 
-[Bytelang 0.2.0 - JAR file (210K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.2.0.jar?raw=true)
+[Bytelang 2.0.0 - JAR file (210K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.2.0.jar?raw=true)
