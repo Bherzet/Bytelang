@@ -1,4 +1,4 @@
-package bytelang.tests.parser.lexical;
+package bytelang.tests;
 
 import static org.junit.Assert.assertTrue;
 
