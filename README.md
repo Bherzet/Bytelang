@@ -26,8 +26,14 @@ If you speak a Czech language, you may also want to see the following video I cr
 This is *not* an ordinary conventional programming language. It's terribly difficult to actually create a large application in that. You won't have idea what you're doing without having expert-level knowledges of Java platform [study material](http://docs.oracle.com/javase/specs/jvms/se7/html/). Don't waste your time unless you are sure that this language & compiler is exactly what you need or want.
 
 ## Download
-[Bytelang 0.8.0 - JAR file (468K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/jars/Bytelang-0.8.0.jar?raw=true)
+[Bytelang 0.8.0 - JAR file (467K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.8.0.jar?raw=true)
 
-[Bytelang 0.8.1 - JAR file (468K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/jars/Bytelang-0.8.1.jar?raw=true)
+[Bytelang 0.8.1 - JAR file (467K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.8.1.jar?raw=true)
 
-[Bytelang 0.8.2 - JAR file (468K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/jars/Bytelang-0.8.2.jar?raw=true)
+[Bytelang 0.8.2 - JAR file (467K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.8.2.jar?raw=true)
+
+[Bytelang 0.9.0 - JAR file (204K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.9.0.jar?raw=true)
+
+[Bytelang 0.9.1 - JAR file (209K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.9.1.jar?raw=true)
+
+[Bytelang 0.2.0 - JAR file (210K)](https://github.com/tzima/Bytelang/blob/master/Bytelang/dist/Bytelang-0.2.0.jar?raw=true)
